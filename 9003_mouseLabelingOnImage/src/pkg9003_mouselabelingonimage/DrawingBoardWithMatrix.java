@@ -37,9 +37,9 @@ public class DrawingBoardWithMatrix extends JFrame implements KeyListener
     boolean clear = false;
     private static ArrayList<Rectangle> rectangles = new ArrayList();
     private static ArrayList<String>        labels = new ArrayList();
-    private int width;
-    private int height;
-    private String imagePath;
+    int width;
+    int height;
+    String imagePath;
     
      public void keyPressed(KeyEvent e) {
         System.out.println("keyPressed");
@@ -75,8 +75,8 @@ public class DrawingBoardWithMatrix extends JFrame implements KeyListener
     
         String label = "";
         public void main(String[] args) {
-          d = new DrawingBoardWithMatrix();
-          d.addKeyListener(this);
+          //d = new DrawingBoardWithMatrix();
+          this.addKeyListener(this);
         }
 
         public DrawingBoardWithMatrix() {
@@ -84,6 +84,15 @@ public class DrawingBoardWithMatrix extends JFrame implements KeyListener
           //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           this.add(new PaintSurface(), BorderLayout.CENTER);
           this.setVisible(true);
+        }
+        public DrawingBoardWithMatrix(String fileName, int width, int height) {
+            this.imagePath = fileName;
+            this.width     = width;
+            this.height    = height;
+            this.setSize(300, 300);
+            //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.add(new PaintSurface(), BorderLayout.CENTER);
+            this.setVisible(true);
         }
 
     /**
@@ -112,48 +121,6 @@ public class DrawingBoardWithMatrix extends JFrame implements KeyListener
      */
     public void setLabels(ArrayList<String> labels) {
         this.labels = labels;
-    }
-
-    /**
-     * @return the width
-     */
-    public int getWidth() {
-        return width;
-    }
-
-    /**
-     * @param width the width to set
-     */
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    /**
-     * @return the height
-     */
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * @param height the height to set
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * @return the imagePath
-     */
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    /**
-     * @param imagePath the imagePath to set
-     */
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
         private class PaintSurface extends JComponent {

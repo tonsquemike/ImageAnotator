@@ -36,7 +36,7 @@ public class callFrame {
             Param.AddArgsFromFile(ConfigFile);
         }
 
-        String Sintaxis   = "-IN:str -OUT:str";
+        String Sintaxis   = "-IN:str [-OUT:str]";
         MySintaxis Review = new MySintaxis(Sintaxis, Param);
 
         IN                = Param.ValueArgsAsString ( "-IN"     , "" );
@@ -45,10 +45,10 @@ public class callFrame {
         ArrayList <Rectangle> rectangles;
         ArrayList <String>        labels;
         
-        DrawingBoardWithMatrix d = new DrawingBoardWithMatrix();
-        d.setWidth(width);
-        d.setHeight(height);
-        d.setImagePath(IN);
+        DrawingBoardWithMatrix d = new DrawingBoardWithMatrix(IN, 500, 500);
+        //d.setWidth(width);
+        //d.setHeight(height);
+        //d.setImagePath(IN);
         
         d.main(args);
         
